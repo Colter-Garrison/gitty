@@ -7,9 +7,9 @@ describe('backend-express-template routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it('example test - delete me!', () => {
-    expect(1).toEqual(1);
-  });
+  it('GET should redirect to Githubs OAuth for login', async () => {
+
+  })
   afterAll(() => {
     pool.end();
   });

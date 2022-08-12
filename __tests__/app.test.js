@@ -41,6 +41,19 @@ describe('OAuth routes', () => {
     }]));
   });
 
+  it('POST should create a new post', async () => {
+    const newPost = {
+      posts: 'This is a new post'
+    };
+    await agent.get('/api/v1/github/callback?code=42');
+    const resp = await agent.post('/api/v1/posts').send(newPost);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newPost,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
